@@ -13,8 +13,8 @@ var DB *sql.DB
 
 func ConnectDB() {
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s",
-		getEnv("DB_USER", "user"),
-		getEnv("DB_PASSWORD", "password"),
+		getEnv("DB_USER", "root"),
+		getEnv("DB_PASSWORD", "123456"),
 		getEnv("DB_HOST", "localhost"),
 		getEnv("DB_PORT", "3307"),
 		getEnv("DB_NAME", "orderingdb"),

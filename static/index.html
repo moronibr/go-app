@@ -9,6 +9,31 @@
   <h1>Usuários</h1>
   <ul id="user-list"></ul>
 
+  <h2>Novo Usuário</h2>
+  <form id="user-form">
+    <label for="name">Nome:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password">Senha:</label>
+    <input type="password" id="password" name="password" required>
+
+    <label for="status">Status:</label>
+    <select id="status" name="status" required>
+      <option value="1">Administrador</option>
+      <option value="0">Usuário</option>
+    </select>
+
+    <button type="submit">Salvar</button>
+
+  </form>
+
+  <h1>Usuários</h1>
+  <ul id="user-list"></ul>
+
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="js/script.js"></script>
 </body>

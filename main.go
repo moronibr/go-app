@@ -1,25 +1,22 @@
 package main
 
 import (
-	"fmt"
-	"log"
+	"go-app/config"
+	"go-app/routes"
 	"net/http"
-
-	"go-app/db"
 )
 
 func main() {
-	// Conectar ao banco
-	if err := db.Connect(); err != nil {
-		log.Fatal(err)
-	}
+	config.ConnectDB()
 
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
+	mux := http.NewServeMux()
 
-	// Servir arquivos estáticos (HTML/CSS/JS)
+	// Servir os arquivos HTML e estáticos
 	fs := http.FileServer(http.Dir("./static"))
-	http.Handle("/", fs)
+	mux.Handle("/", fs)
 
-	fmt.Println("🚀 Server running at http://localhost:8000")
-	log.Fatal(http.ListenAndServe(":8000", nil))
+	// Rotas da API
+	routes.RegisterRoutes(mux)
+
+	http.ListenAndServe(":8000", mux)
 }
